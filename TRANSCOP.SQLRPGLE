@@ -59,7 +59,8 @@ begsr transcoTableClient;
     from milfort.transcof
     where code_entree=UPPER(:w_clientparticulier);
 
-    if sqlcode = 0; //OK
+    if sqlcode = 0; // OK
+
       transcoDs.ouDs.code_sortie = w_codeSortie;
       transcoDs.ouDs.returnCode = 0;
       dsply ('sqlcode '
@@ -70,7 +71,9 @@ begsr transcoTableClient;
          );
       dsply ('returnCode = '
           + %char(transcoDs.ouDs.returnCode));
-      elseif sqlcode = 100; // no data
+
+    else; // others SQL errors
+
         transcoDs.ouDs.returnCode = 1;
         dsply (' erreur sql '
            + %char(sqlcode)
@@ -78,17 +81,7 @@ begsr transcoTableClient;
            + %char(w_codeSortie)
            + ' non trouvé '
            );
-         dsply ('returnCode = '
-          + %char(transcoDs.ouDs.returnCode));
-      else;
-        transcoDs.ouDs.returnCode = 1;
-        dsply (' erreur sql '
-           + %char(sqlcode)
-           + ' codesorti '
-           + %char(w_codeSortie)
-           + ' non trouvé '
-           );
-         dsply ('returnCode = '
+         dsply ('erreur returnCode = '
           + %char(transcoDs.ouDs.returnCode));
     endif;
 
