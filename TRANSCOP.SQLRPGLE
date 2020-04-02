@@ -18,26 +18,53 @@ dcl-s w_returnCode         int(10);
 dcl-s errCheckParm         ind;
 
 
-
-
 monitor;
 
   clear w_clientParticulier;
   clear transcoDs.ouDs;
 
 
-  // reception client_particulier
-  w_message =   'transcoDs :  ( client particulier : '
-              + %trim(transcoDs.inDs.client_particulier)
-              + ')';
+  exsr checkParm;
 
-  //dsply (%trim(w_message));
+  exsr rechercheCodeSortie;
 
-  w_clientParticulier = %char(transcoDs.inDs.client_particulier);
+//---------------------------------------------------------------------
+  exsr checkParm;
+    if not errCheckParm;
 
-  exsr transcoTableClient;
+      w_message =   'client particulier : '
+                  + %trim(transcoDs.inDs.client_particulier)
+                  + '.';
+      dsply (%trim(w_message));
+
+      w_clientParticulier = %char(transcoDs.inDs.client_particulier);
+      w_codeSortie =  %dec(transcoDs.ouDs.code_sortie);
+      w_returnCode = %dec(transcoDs.ouDs.returnCode);
 
 
+      if transcoDs.ouDs.returnCode = 0; // tout va bien
+        clear w_message;
+        w_message =   ' in.client '
+                    + %trim(transcoDs.inDs.client_particulier)
+                    + ' ou.code '
+                    + %char(transcoDs.ouDs.code_sortie)
+                    + ' ou.rc '
+                    + %char(transcoDs.ouDs.returnCode)
+                   + '.';
+
+        dsply (%trim(w_message));
+
+      else;  // erreur rencontree pendant execution transco
+        clear w_message;
+        w_message =   ' erreur transco '
+                    + ' pour client : '
+                    + %char(transcoDS.inDS.client_particulier);
+        dsply (%trim(w_message));
+      endif;
+
+    else;
+    // erreur parametres
+    endif;
 
 on-error *all;
 
@@ -45,8 +72,36 @@ endmon;
 
 *inlr = *on;
 
+//---------------------------------------------------------------------
+begsr checkParm;
+
+  errCheckParm = *off;
+  clear w_codeSortie;
+
+  // controle valeur de client particulier
+  if transcoDs.inDs.client_particulier <> *blanks;
+
+    monitor;
+
+      w_clientParticulier = %char(transcoDs.inDs.client_particulier);
+
+    on-error *all; // client est vide
+      dsply ('parametre client vide');
+      errCheckParm = *on;
+    endmon;
+
+  else; // client = blanc
+    dsply ('parametre client blanc');
+    errCheckParm = *on;
+  endif;
+
+
+endsr;
+
+
+
 //-----------------------------------------------------------------------------
-begsr transcoTableClient;
+begsr rechercheCodeSortie;
 
   clear w_codeSortie;
 
@@ -59,10 +114,10 @@ begsr transcoTableClient;
     from milfort.transcof
     where code_entree=UPPER(:w_clientparticulier);
 
-    if sqlcode = 0; // OK
+    if sqlcode = 0; //OK
 
       transcoDs.ouDs.code_sortie = w_codeSortie;
-      transcoDs.ouDs.returnCode = 0;
+      transcoDs.ouDs.returnCode = 0;    // OK
       dsply ('sqlcode '
          + %char(sqlcode)
          + ' code_sortie '
@@ -72,10 +127,10 @@ begsr transcoTableClient;
       dsply ('returnCode = '
           + %char(transcoDs.ouDs.returnCode));
 
-    else; // others SQL errors
+      else;
 
-        transcoDs.ouDs.returnCode = 1;
-        dsply (' erreur sql '
+        transcoDs.ouDs.returnCode = 1;  //Erreur pas de code
+        dsply ('erreur sql '
            + %char(sqlcode)
            + ' codesorti '
            + %char(w_codeSortie)
@@ -85,9 +140,9 @@ begsr transcoTableClient;
           + %char(transcoDs.ouDs.returnCode));
     endif;
 
-
   else;
-    transcoDs.ouDs.returnCode = 1;
+
+    transcoDs.ouDs.returnCode = 1; //Erreur param blanc
     // renseigner le client particulier
     dsply ('Veuillez renseigner le client particulier');
     dsply ('erreur returnCode = '
