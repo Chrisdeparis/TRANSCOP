@@ -1,11 +1,14 @@
-# écriture d'un programme RPG (comme clinom dans tab bibliothèque) : transcoP
+# Ecriture d'un programme RPG : transcoP
 
-ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'client_particulier', 'client_societe'...) . 
-il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
+## comme NOMCLI
+
+Ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'client_particulier', 'client_societe'...) . 
+Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
  Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie. Le code de sortie (trouvé dans la table) sera de type numérique (packed(5:0)).
-exemple de correspondance :
-  'client_particulier'  -> 124 (code retourné par le programme provenant de la table)
-   'client_societe' -> 125
+ 
+Exemple de correspondance :
+>  'client_particulier'  -> 124 (code retourné par le programme provenant de la table)
+>   'client_societe' -> 125
 
 la table transcoF a 2 colonnes code_entree char(20), code_sortie packed(5:0)
 
@@ -31,5 +34,5 @@ Je pense à 3 cas de tests :
 - cas 02 (non passant) : paramètre valide ( code_entrée = 'client_particulier' ) mais code non trouvé dans la table -> return code = 1
 - cas 03 (cas passant) :  paramètre valide ( code_entrée = 'client_societe' ) et code trouvé dans la table -> return code = 0, et code_sortie = 125
 
-dans le setup il faudra créer la table transcoF dans la bibliothèque transcoTU (et la supprimer dans tear down).
+Dans le setup il faudra créer la table transcoF dans la bibliothèque transcoTU (et la supprimer dans tear down).
 Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans la table transcoF, donc créer créer un script sql transco02.sql et  transco03.sql
