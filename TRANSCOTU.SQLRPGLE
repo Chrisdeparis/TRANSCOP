@@ -62,17 +62,14 @@ end-proc;
 ////==============================================================
 //// CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'client_particulier' )
 //  mais code non trouvé dans la table -> return code = 1
-//dcl-proc test_02_jetepasse0jerecois32etfreezing export;
-//
-//  wtempFahr    = 0;
-//  wtempCelsius = 0;
-//  wstatus      = *blanks;
+//dcl-proc test_02_paramOkcodeInexistant export;
+//  clear transcoDs;
 //
 //  // appel
 //  TRANSCOP(transcoDs);
 //
 //  assert (transcoDs.ouDs.returnCode = 1
-//         : ' Erreur Transco code non trouvé '
+//         : ' Param ok Erreur Transcop code non trouvé '
 //         );
 //
 //
