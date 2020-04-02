@@ -1,0 +1,30 @@
+             PGM
+             /* déclaration des variables */
+             DCL        VAR(&LIBTUADH) TYPE(*CHAR) LEN(10) VALUE('ADHTU')
+
+             /* suppression des modules */
+             DLTMOD     MODULE(&LIBTUADH/SUTransco)
+             MONMSG     CPF2105
+
+             DLTMOD     MODULE(&LIBTUADH/TranscoTU)
+             MONMSG     CPF2105
+
+             DLTMOD     MODULE(&LIBTUADH/TDTransco)
+             MONMSG     CPF2105
+
+             /* création des modules */
+             CRTSQLRPGI OBJ(&LIBTUADH/SUTransco) SRCFILE(&LIBTUADH/QRPGSRC) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+             CRTSQLRPGI OBJ(&LIBTUADH/TranscoTU) SRCFILE(&LIBTUADH/QRPGSRC) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+             CRTSQLRPGI OBJ(&LIBTUADH/TDTransco) SRCFILE(&LIBTUADH/QRPGSRC) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+
+             /* création programme de service TU */
+             CRTSRVPGM  SRVPGM(&LIBTUADH/T_Transco) MODULE(&LIBTUADH/SUTransco +
+                          &LIBTUADH/TranscoTU &LIBTUADH/TDTransco) EXPORT(*ALL) TEXT('TU - +
+                          module Transco') BNDDIR(RPGUNIT/RPGUNIT QC2LE) ACTGRP(*CALLER)
+
+             /*envoi vers l'integration */
+             SAVRSTOBJ  OBJ(T_Transco) LIB(ADHTU) RMTLOCNAME(SRV0803) OBJTYPE(*SRVPGM)
+             ENDPGM 
