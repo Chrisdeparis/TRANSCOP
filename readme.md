@@ -38,3 +38,8 @@ Je pense à 3 cas de tests :
 
 Dans le setup il faudra créer la table transcoF dans la bibliothèque transcoTU (et la supprimer dans tear down).
 Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans la table transcoF, donc créer créer un script sql transco02.sql et  transco03.sql
+
+
+- Comment bien créer les script de test avec les data ? pour les cas 2 et 3
+
+

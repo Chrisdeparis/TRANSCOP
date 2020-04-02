@@ -129,7 +129,7 @@ begsr rechercheCodeSortie;
 
       else;
 
-        transcoDs.ouDs.returnCode = 1;  //Erreur pas de code
+        transcoDs.ouDs.returnCode = 1;  //Erreur pas de code trouvé
         dsply ('erreur sql '
            + %char(sqlcode)
            + ' codesorti '
