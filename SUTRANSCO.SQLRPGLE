@@ -22,19 +22,43 @@ end-pr;
 dcl-proc setUp  export;
 
   dcl-pi *n;
-
   end-pi;
 
-//  exec sql
-//  create collection transcotu;
-//
-//  create table transcotu.transcoF (
-//    code_entree char(20),
-//    code_sortie dec(5)
-//  );
+  exec sql
+  create collection transcotu;
+
+  // message erreur collection
+  Assert(SqlCode = 0
+        :'Erreur création collection transcotu : SqlCode = ' + %Char(SqlCode));
 
 
+  // creation table TRANSCOTU/transcof
+  exec sql
+  create table transcotu/transcof (
+    code_entree char(20),
+    code_sortie dec(5)
+  );
+
+  // message erreur table
+  Assert(SqlCode = 0
+        :'Erreur creation table transcotu/transcof ' + %Char(SqlCode));
+
+
+  AddLibLe();
 
 end-proc;
 
-//-------------------------------------------------------------------- 
+//--------------------------------------------------------------------
+// Procédure début: AddLibLe
+//------------------------------------------------------------------
+Dcl-Proc AddLibLe;
+  Dcl-S rc              Int(10);
+
+  wCommande = 'AddLibLe Lib(transcotu)';
+
+  // Execution commande
+  rc = ExecCmd(%Trim(wCommande));
+
+  Assert(rc = 0
+        :'Une erreur est survenue lors du AddLibLe de transcotu');
+End-Proc; 
