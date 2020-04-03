@@ -51,7 +51,7 @@ Et d'envoyer les modifications en intégration :
 > SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  
 
 - En intégration : SRV0803
-> rucalltst t_transco  
+> RUCALLTST T_TRANSCO  
 
  Success. 3 test cases, 30 assertions, 0 failure, 0 error.        
 
