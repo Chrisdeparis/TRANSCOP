@@ -4,7 +4,7 @@
 
        // parametres en entrée (input)
        dcl-ds inDs_template qualified;
-         client_particulier char(20);
+         code_entree char(20);
        end-ds;
 
        // parametres en sortie (output)
