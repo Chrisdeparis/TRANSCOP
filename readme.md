@@ -44,6 +44,6 @@ Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans
 
 Les scripts de tests sont à ajouter dans l'IFS Application/Adhesion/TU/ChargeDB2/letest
 
-Ne pas oublier de compiler le transcop après toute modification sur asdev : 
+Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification sur asdev : 
 > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)
 
