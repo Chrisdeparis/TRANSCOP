@@ -4,4 +4,4 @@
 
 insert into transcotu/transcof
 (code_entree, code_sortie)
-values ('JAMES', 70000);
+values ('JAMES', 7000);
