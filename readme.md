@@ -10,8 +10,8 @@ Il devra contrôler que le code en entrée est renseigné, si le code est rensei
  Le code de sortie (trouvé dans la table) sera de type numérique (packed(5:0)).
  
 Exemple de correspondance :
->  'client_particulier'  -> 124 (code retourné par le programme provenant de la table)
->   'client_societe' -> 125
+>  'code_entree'  -> 12345 (code retourné par le programme provenant de la table)
+
 
 la table transcoF a 2 colonnes code_entree char(20), code_sortie packed(5:0)
 
@@ -25,7 +25,7 @@ le comportement attendu :
 si le code d'entrée est à blanc -> erreur : return code = 1
 => OK
 > call transcop parm('')                           
-> DSPLY  Veuillez renseigner le client particulier 
+> DSPLY  Veuillez renseigner le code entree 
 > DSPLY  returnCode = 1                            
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
@@ -33,8 +33,8 @@ Il s'agit dans cet exercice de se mettre en mode TDD (test driven development) d
 
 Je pense à 3 cas de tests :
 - cas 01 (non passant) : paramètre à blanc -> return code  = 1
-- cas 02 (non passant) : paramètre valide ( code_entrée = 'client_particulier' ) mais code non trouvé dans la table -> return code = 1
-- cas 03 (cas passant) :  paramètre valide ( code_entrée = 'client_societe' ) et code trouvé dans la table -> return code = 0, et code_sortie = 125
+- cas 02 (non passant) : paramètre valide ( code_entrée = 'TOTO' ) mais code non trouvé dans la table -> return code = 1
+- cas 03 (cas passant) : paramètre valide ( code_entrée = 'JAMES' ) et code trouvé dans la table -> return code = 0, et code_sortie = 7000
 
 Dans le setup il faudra créer la table transcoF dans la bibliothèque transcoTU (et la supprimer dans tear down).
 Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans la table transcoF, donc créer créer un script sql transco02.sql et  transco03.sql
