@@ -1,145 +1,132 @@
 **free
-ctl-opt option(*srcstmt) dftactgrp(*No);
+ctl-opt nomain;
 
-// DS des paramètres
+/copy RPGUNIT/RPGUNIT1,TESTCASE
+/copy h1frptechs/qcopsrc,s_spvDS
 /copy MILFORT/qcopsrc,transcoDs
 
-dcl-pi *n;
-  //paremeter list
-  transcoDs likeDs(transcoDs_template);
-end-pi;
+// pgm a tester
+dcl-pr transcop extpgm('TRANSCOP');
+  toto likeDs(transcoDs_template);
+end-pr;
 
-// variables de travail
-dcl-s w_message            char(50);
+dcl-ds transcoDs likeDs(transcoDs_template);
+
+// définition des constantes
+dcl-c APPLICATION     const('ADHTU');
+
+// définition des variables
+dcl-s wcurrentdate   date;
+dcl-s wvanpalier     packed(18:11);
+dcl-s rc             int(10);
+dcl-s wCommande      char(512);
+
 dcl-s w_codeEntree         char(20);
 dcl-s w_codeSortie         packed(5);
 dcl-s w_returnCode         int(10);
-dcl-s errCheckParm         ind;
 
-monitor;
 
-  clear w_codeEntree;
-  clear transcoDs.ouDs;
+// définition des prototypes
+dcl-pr execcmd    int(10) extproc('system');
+  cmdstring     pointer value   options(*string);
+end-pr;
 
-  exsr checkParm;
+dcl-pr chargeDB2  ;
+  nomTest  char(10) const;
+  testCase char(10) const;
+end-pr;
 
-  exsr rechercheCodeSortie;
+//==============================================================
+// CAS de TEST 1 : (non passant) : paramètre à blanc -> return code  = 1
 
-//---------------------------------------------------------------------
-  exsr checkParm;
-    if not errCheckParm;
+dcl-proc test_01_codeEntreeVide export;
 
-      w_message =   'code entree : '
-                  + %trim(transcoDs.inDs.code_entree)
-                  + '.';
-      dsply (%trim(w_message));
+  clear transcoDs;
+  transcoDs.inDs.code_entree = '';
 
-      w_codeEntree = %char(transcoDs.inDs.code_entree);
-      w_codeSortie =  %dec(transcoDs.ouDs.code_sortie);
-      w_returnCode = %dec(transcoDs.ouDs.returnCode);
+  // appel
+  TRANSCOP(transcoDs);
 
-      if transcoDs.ouDs.returnCode = 0; // tout va bien
-        clear w_message;
-        w_message =   ' in.code entree '
-                    + %trim(transcoDs.inDs.code_entree)
-                    + ' ou.code sortie '
-                    + %char(transcoDs.ouDs.code_sortie)
-                    + ' ou.rc '
-                    + %char(transcoDs.ouDs.returnCode)
-                   + '.';
-
-        dsply (%trim(w_message));
-
-      else;  // erreur rencontree pendant execution transco
-        clear w_message;
-        w_message =   ' erreur transco '
-                    + ' pour code entree : '
-                    + %char(transcoDs.inDs.code_entree);
-        dsply (%trim(w_message));
-      endif;
-
-    else;
-    // erreur parametres
-    endif;
-
-on-error *all;
-
-endmon;
-
-*inlr = *on;
-
-//---------------------------------------------------------------------
-begsr checkParm;
-
-  errCheckParm = *off;
-  clear w_codeSortie;
-
-  // controle valeur de code entree
-  if transcoDs.inDs.code_entree <> *blanks;
-
-    monitor;
-
-      w_codeEntree = %char(transcoDs.inDs.code_entree);
-
-    on-error *all; // client est vide
-      dsply ('parametre code entree vide');
-      errCheckParm = *on;
-    endmon;
-
-  else; // client = blanc
-    dsply ('parametre code entree blanc');
-    errCheckParm = *on;
-  endif;
-
-endsr;
-
-//-----------------------------------------------------------------------------
-begsr rechercheCodeSortie;
-
-  clear w_codeSortie;
-
-  // si le paramètre en entrée est renseigné
-  if w_codeEntree <> *blanks;
-    // chercher la correspondance dans la table à créer
-    exec sql
-    select  code_sortie
-    into :w_codesortie
-    from transcof
-    where code_entree = upper(:w_codeentree);
-
-    if sqlcode = 0; //OK
-
-      transcoDs.ouDs.code_sortie = w_codeSortie;
-      transcoDs.ouDs.returnCode = 0;    // OK
-      dsply ('sqlcode '
-         + %char(sqlcode)
-         + ' code_sortie '
-         + %char(w_codeSortie)
-         + ' trouvé '
+  // resultat attendu :  paramètre à blanc -> return code  = 1
+  assert (transcoDs.ouDs.returnCode = 1
+         :'Erreur : non détectée par TRANSCOP'
          );
-      dsply ('returnCode = '
-          + %char(transcoDs.ouDs.returnCode));
 
-    else;
+end-proc;
 
-        transcoDs.ouDs.returnCode = 1;  //Erreur pas de code
-        dsply ('erreur sql '
-           + %char(sqlcode)
-           + ' codesorti '
-           + %char(w_codeSortie)
-           + ' non trouvé '
-           );
-         dsply ('param ok code entrée non trouvé rc = '
-          + %char(transcoDs.ouDs.returnCode));
-    endif;
+////==============================================================
+//// CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'code_entree' )
+//  mais code non trouvé dans la table -> return code = 1
+dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 
-  else;
+  clear transcoDs;
+  transcoDs.inDs.code_entree = 'TOTO';
 
-    transcoDs.ouDs.returnCode = 1; //Erreur param blanc
-    // renseigner le code entree
-    dsply ('Veuillez renseigner le code entree');
-    dsply ('erreur returnCode = '
-          + %char(transcoDS.ouDs.returnCode));
-  endif;
+  chargeDB2(APPLICATION: 'transco02');
+  // appel
+  TRANSCOP(transcoDs);
 
-endsr; 
+//   résultat attendu : erreur = erreur code sortie non trouvé
+//   test ok : erreur détectée par transcop     -> return code = 1
+//   test ko : erreur non détectée par transcop -> return code = 0
+  assert (transcoDs.ouDs.returnCode = 1
+         : ' Erreur non détectée par TRANSCOP '
+         );
+
+end-proc;
+
+////==============================================================
+//// CAS de TEST 3 : (passant) :paramètre valide ( code_entrée = 'JAMES' )
+//   et code trouvé dans la table -> return code = 0
+dcl-proc test_03_codeEntreeOKcodeSortieOk export;
+
+  clear transcoDs;
+  transcoDs.inDs.code_entree = 'JAMES';
+
+  chargeDB2(APPLICATION: 'transco03');
+
+  // appel
+  TRANSCOP(transcoDs);
+
+// resultat attendu = pas d'erreur
+// test ok : pas erreur detectee par transcop => returnCode = 0
+// test ok : pas erreur detectee par transcop => code_entree James trouvé
+// test ok : pas erreur detectee par transcop = > code sortie = 7000
+  assert (transcoDs.ouDs.returnCode = 0
+         : ' Erreur détectée par TRANSCOP '
+         );
+
+       assert (transcoDs.ouDs.code_sortie = 7000
+         : ' Erreur détectée par TRANSCOP code sortie vide '
+         );
+
+end-proc;
+
+//----------------------------------------------------------------
+dcl-proc chargeDB2;
+
+  dcl-pi *n;
+    APPLICATION    char(10) const;
+    testCase       char(10) const;
+  end-pi;
+
+  dcl-s wCommand    char(512);
+
+  wrc=0;
+
+  wCommand = 'RUNSQLSTM '
+           + 'SRCSTMF'
+           + '('''
+           + '/Application/Adhesion/TU/chargeDB2/t_transco/'
+           + %trim(testCase)
+           + '.sql'
+           + ''') '
+           + 'COMMIT(*NC) '
+           + 'MARGINS(112)';
+
+   wrc = execCmd(wCommand);
+
+   assert(wrc=0
+      :'Une erreur est survenue lors de la creation des BDD');
+
+end-proc; 
