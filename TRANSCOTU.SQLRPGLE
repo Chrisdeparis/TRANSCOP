@@ -117,7 +117,7 @@ dcl-proc chargeDB2;
   wCommand = 'RUNSQLSTM '
            + 'SRCSTMF'
            + '('''
-           + '/Application/Adhesion/TU/chargeDB2/t_spvrcapp/'
+           + '/Application/Adhesion/TU/chargeDB2/t_transco/'
            + %trim(testCase)
            + '.sql'
            + ''') '
