@@ -42,5 +42,5 @@ Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans
 
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
 
-> Les scripts de tests sont ajoutés dans l'IFS Application/Adhesion/TU/ChargeDB2/letest
+Les scripts de tests sont à ajouter dans l'IFS Application/Adhesion/TU/ChargeDB2/letest
 
