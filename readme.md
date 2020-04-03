@@ -2,7 +2,7 @@
 
 ## comme NOMCLI
 
-Ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'client_particulier', 'client_societe'...) .
+Ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'code_entree'.
 
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
