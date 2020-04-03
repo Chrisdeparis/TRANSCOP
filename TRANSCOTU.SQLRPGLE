@@ -62,14 +62,36 @@ end-proc;
 ////==============================================================
 //// CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'client_particulier' )
 //  mais code non trouvé dans la table -> return code = 1
-//dcl-proc test_02_paramOkcodeInexistant export;
-//  clear transcoDs;
+//dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 //
+//  chargeDB2(APPLICATION: 'transco02');
 //  // appel
 //  TRANSCOP(transcoDs);
-//
+
+  // résultat attendu : erreur = erreur code sortie non trouvé
+  // test ok : erreur détectée par transcop     -> return code = 1
+  // test ko : erreur non détectée par transcop -> return code = 0
 //  assert (transcoDs.ouDs.returnCode = 1
-//         : ' Param ok Erreur Transcop code non trouvé '
+//         : ' Erreur non détectée par TRANSCOP '
+//         );
+//
+//
+//end-proc;
+
+////==============================================================
+//// CAS de TEST 3 : (passant) :paramètre valide ( code_entrée = 'client_societe' )
+//   et code trouvé dans la table -> return code = 0
+//dcl-proc test_03_codeEntreeOKcodeSortieOk export;
+//
+//  chargeDB2(APPLICATION: 'transco03');
+//  // appel
+//  TRANSCOP(transcoDs);
+
+  // résultat attendu : erreur = erreur code sortie non trouvé
+  // test ok : erreur détectée par transcop     -> return code = 1
+  // test ko : erreur non détectée par transcop -> return code = 0
+//  assert (transcoDs.ouDs.returnCode = 0
+//         : ' Erreur détectée par TRANSCOP '
 //         );
 //
 //
