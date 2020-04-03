@@ -65,6 +65,8 @@ end-proc;
 //dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 //
 //  chargeDB2(APPLICATION: 'transco02');
+//  transcoDs.inDs.client_particulier = 'MILFORT';
+
 //  // appel
 //  TRANSCOP(transcoDs);
 
@@ -84,6 +86,9 @@ end-proc;
 //dcl-proc test_03_codeEntreeOKcodeSortieOk export;
 //
 //  chargeDB2(APPLICATION: 'transco03');
+//  transcoDs.inDs.client_particulier = 'JAMES';
+//  transcoDs.ouDs.code_sortie = '70000';
+
 //  // appel
 //  TRANSCOP(transcoDs);
 
