@@ -47,3 +47,6 @@ Les scripts de tests sont à ajouter dans l'IFS Application/Adhesion/TU/ChargeDB
 Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification sur asdev : 
 > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)
 
+Et d'envoyer les modifications en intégration : 
+> SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  
+
