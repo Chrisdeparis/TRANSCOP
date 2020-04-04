@@ -1,5 +1,5 @@
 # RPG : TRANSCOP
-***Exercice de transcodage : 
+*Exercice de transcodage : 
 
 
 Ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'code_entree'.
