@@ -129,7 +129,7 @@ begsr rechercheCodeSortie;
            + %char(w_codeSortie)
            + ' non trouvé '
            );
-         dsply ('param ok code entrée non trouvé rc = '
+         dsply ('param ok code sortie non trouvé rc = '
           + %char(transcoDs.ouDs.returnCode));
     endif;
 
