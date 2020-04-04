@@ -30,7 +30,7 @@ si le code d'entrée est à blanc -> erreur : return code = 1
 > DSPLY  returnCode = 1                            
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
-Il s'agit dans cet exercice de se mettre en mode TDD (test driven development) ⚠⚠⚠ d'écrire une fonctionnalité dans **_transcop_** et d'écrire le cas de test (progamme de tu) correspondant (ex : contrôle paramètre entrant), d'écrire la fonctionnalité suivante (recherche code sortie dans la table) et de coder le cas de test correspondant. 
+Il s'agit dans cet exercice de se mettre en mode **TDD (test driven development)** ⚠⚠⚠ d'écrire une fonctionnalité dans **_transcop_** et d'écrire le cas de test (progamme de tu) correspondant (ex : contrôle paramètre entrant), d'écrire la fonctionnalité suivante (recherche code sortie dans la table) et de coder le cas de test correspondant. 
 
 Je pense à 3 cas de tests :
 > - cas 01 (non passant) : paramètre à blanc -> return code  = 1     ✅
