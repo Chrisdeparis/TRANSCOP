@@ -13,7 +13,7 @@ end-pr;
 dcl-ds transcoDs likeDs(transcoDs_template);
 
 // définition des constantes
-dcl-c APPLICATION     const('ADHTU');
+dcl-c APPLICATION    const('ADHTU');
 
 // définition des variables
 dcl-s wcurrentdate   date;
@@ -21,9 +21,9 @@ dcl-s wvanpalier     packed(18:11);
 dcl-s rc             int(10);
 dcl-s wCommande      char(512);
 
-dcl-s w_codeEntree         char(20);
-dcl-s w_codeSortie         packed(5);
-dcl-s w_returnCode         int(10);
+dcl-s w_codeEntree   char(20);
+dcl-s w_codeSortie   packed(5);
+dcl-s w_returnCode   int(10);
 
 
 // définition des prototypes

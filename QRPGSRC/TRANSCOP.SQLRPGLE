@@ -35,7 +35,7 @@ monitor;
       dsply (%trim(w_message));
 
       w_codeEntree = %char(transcoDs.inDs.code_entree);
-      w_codeSortie =  %dec(transcoDs.ouDs.code_sortie);
+      w_codeSortie = %dec(transcoDs.ouDs.code_sortie);
       w_returnCode = %dec(transcoDs.ouDs.returnCode);
 
       if transcoDs.ouDs.returnCode = 0; // tout va bien

@@ -44,6 +44,9 @@ Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans
 
 Les scripts de tests sont à ajouter dans l'IFS Application/Adhesion/TU/ChargeDB2/letest
 
+- Le CL de TU : gère les modules de TU et le programme de service de test.
+> CALL T_TRANSCO
+
 Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification sur asdev : 
 > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)
 
@@ -54,4 +57,5 @@ Et d'envoyer les modifications en intégration :
 > RUCALLTST T_TRANSCO  
 
  Success. 3 test cases, 30 assertions, 0 failure, 0 error.        
+
 
