@@ -47,7 +47,7 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql    ✅
 > Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql    ✅
 
-- Le CL de TU : gère les modules de TU et le programme de service de test.
+- Le CL de TU : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 > CALL T_TRANSCO    ✅
 
 Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification sur ASDEV : ⚠
