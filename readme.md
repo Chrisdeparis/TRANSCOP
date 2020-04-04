@@ -54,6 +54,12 @@ Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification su
 Et d'envoyer les modifications en intégration : ⚠⚠⚠ 
 > SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  ✅
 
+- En Dev : 
+> CALL TRANSCOP PARM('CHRISTIAN')
+> =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
+> =>  DSPLY  returnCode = 0                         ✅  
+
+
 - En intégration : SRV0803 lancer les tests...
 > RUCALLTST T_TRANSCO  ✅
 
