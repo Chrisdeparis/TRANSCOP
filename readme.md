@@ -2,20 +2,21 @@
 **_Exercice de transcodage_** : 
 
 
-Ce programme a pour fonction de recevoir en paramètre un code (long 20 alpha, exemple type client : 'code_entree'.
+Ce programme a pour fonction de recevoir en _paramètre_ un code (long 20 alpha, exemple type client : '_code_entree_'.
 
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
- Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie.
- Le code de sortie (trouvé dans la table) sera de type numérique (packed(5:0)).
+Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie.
+Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)).
  
-Exemple de correspondance :
->  'code_entree'  -> 12345 (code retourné par le programme provenant de la table)
+Exemple de correspondance : dans la table _transcof_
+>  'code_entree'  -> 'CHRISTIAN' 
+>  'code_sortie'  ->  12345
 
 
-la table transcoF a 2 colonnes code_entree char(20), code_sortie packed(5:0) ⚠
+La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
 
-le programme retourne 2 paramètres le returncode et le code de sortie.      ✅
+Le programme retourne 2 paramètres le _returncode_ et le _code de sortie_.      ✅
 
 > // call transcop parm('christian')                ✅          
 > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
