@@ -34,9 +34,7 @@ Il s'agit dans cet exercice de se mettre en mode **TDD (test driven development)
 
 Je pense à 3 cas de tests :
 > - cas 01 (non passant) : paramètre à blanc -> return code  = 1     ✅
-
 > - cas 02 (non passant) : paramètre valide ( code_entrée = 'TOTO' ) mais code non trouvé dans la table -> return code = 1    ✅
-
 > - cas 03 (cas passant) : paramètre valide ( code_entrée = 'JAMES' ) et code trouvé dans la table -> return code = 0, et code_sortie = 7000    ✅
 
 Dans le setup il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans tear down).    ✅
