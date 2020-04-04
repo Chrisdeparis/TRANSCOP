@@ -51,7 +51,7 @@ monitor;
 
         dsply (%trim(w_message));
 
-      else;  // erreur rencontree pendant execution transco
+      else;  // erreur rencontree pendant execution transcop
         clear w_message;
         w_message =   ' erreur transcop'
                     + ' pour code entree : '
