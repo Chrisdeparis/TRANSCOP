@@ -53,7 +53,7 @@ monitor;
 
       else;  // erreur rencontree pendant execution transco
         clear w_message;
-        w_message =   ' erreur transco '
+        w_message =   ' erreur transcop'
                     + ' pour code entree : '
                     + %char(transcoDs.inDs.code_entree);
         dsply (%trim(w_message));
