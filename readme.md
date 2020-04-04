@@ -42,7 +42,7 @@ Pour les cas 02 et 03 il faudra utiliser chargeDB2 pour insérer des lignes dans
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
 
 Les scripts de tests sont à ajouter en intégration dans l'IFS : 
-> Application/Adhesion/TU/ChargeDB2/t_letest/letest01.sql
+> Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql
 
 - Le CL de TU : gère les modules de TU et le programme de service de test.
 > CALL T_TRANSCO
