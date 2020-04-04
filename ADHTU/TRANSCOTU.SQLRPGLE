@@ -54,9 +54,10 @@ dcl-proc test_01_codeEntreeVide export;
 
 end-proc;
 
-////==============================================================
-//// CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'code_entree' )
+//==============================================================
+// CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'code_entree' )
 //  mais code non trouvé dans la table -> return code = 1
+
 dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 
   clear transcoDs;
@@ -75,9 +76,10 @@ dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 
 end-proc;
 
-////==============================================================
-//// CAS de TEST 3 : (passant) :paramètre valide ( code_entrée = 'JAMES' )
+//==============================================================
+// CAS de TEST 3 : (passant) :paramètre valide ( code_entrée = 'JAMES' )
 //   et code trouvé dans la table -> return code = 0
+
 dcl-proc test_03_codeEntreeOKcodeSortieOk export;
 
   clear transcoDs;
