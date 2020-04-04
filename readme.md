@@ -16,7 +16,7 @@ Exemple de correspondance : dans la table _transcof_
 
 La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
 
-Le programme retourne 2 paramètres le _returncode_ et le _code de sortie_.      ✅
+Le programme retourne 2 paramètres le _returncode_ et le _code_sortie_.      ✅
 
 > // call transcop parm('christian')                ✅          
 > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
