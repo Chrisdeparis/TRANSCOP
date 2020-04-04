@@ -16,6 +16,7 @@ dcl-s w_codeSortie         packed(5);
 dcl-s w_returnCode         int(10);
 dcl-s errCheckParm         ind;
 
+*inlr = *on;
 monitor;
 
   clear w_codeEntree;
@@ -66,7 +67,7 @@ on-error *all;
 
 endmon;
 
-*inlr = *on;
+
 
 //---------------------------------------------------------------------
 begsr checkParm;
