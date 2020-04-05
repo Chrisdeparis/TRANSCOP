@@ -14,6 +14,13 @@ Exemple de correspondance : dans la table _transcof_
 >  'code_sortie'  ->  12345
 
 
+    // chercher la correspondance entre la table et le paramètre
+    exec sql
+    select  code_sortie
+    into :w_codesortie
+    from transcof
+    where code_entree = upper(:w_codeentree);
+
 La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
 
 Le programme retourne 2 paramètres le _returncode_ et le _code_sortie_.      ✅
