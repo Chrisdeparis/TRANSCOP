@@ -101,7 +101,7 @@ begsr rechercheCodeSortie;
 
   // si le paramètre en entrée est renseigné
   if w_codeEntree <> *blanks;
-    // chercher la correspondance dans la table à créer
+    // chercher la correspondance entre la table et le paramètre
     exec sql
     select  code_sortie
     into :w_codesortie
