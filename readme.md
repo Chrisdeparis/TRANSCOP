@@ -12,12 +12,13 @@ Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)
 Exemple de correspondance : dans la table **_[TRANSCOF](https://github.com/Chrisdeparis/TRANSCOP/blob/master/SCRIPT/transcof.sql)_**
 
 
-```diff
-|----------------|---------------|
+
 |   code_entree  |  code_sortie  |
-|----------------|---------------|
+|:--------------:|:-------------:|
 |   CHRISTIAN    |  12345        |
-```
+
+
+
 ```sql
     // chercher la correspondance entre la table et le paramètre
     exec sql
