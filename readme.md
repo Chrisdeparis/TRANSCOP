@@ -83,7 +83,6 @@ Et d'envoyer les modifications en intégration : ⚠⚠⚠
 - En intégration : SRV0803 lancer les tests...
 ```diff
 + > RUCALLTST T_TRANSCO  ✅
-
 + Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
  ```
 
