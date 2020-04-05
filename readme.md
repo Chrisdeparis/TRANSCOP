@@ -2,11 +2,11 @@
 
 **_Exercice de transcodage_** : 
 
-## Les DS comme paramètres (TRANSCODS)
+## Les DS en paramètres (TRANSCODS)
 
 Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
-## La table DB2 et SQL (TRANSCOF)
+## La table DB2/SQL (TRANSCOF)
 
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
@@ -29,7 +29,7 @@ Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisd
     where code_entree = upper(:w_codeentree);
 ```
 
-La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
+La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
 
 ## Le rôle du programme TRANSCOP
 
