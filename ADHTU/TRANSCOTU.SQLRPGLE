@@ -48,6 +48,7 @@ dcl-proc test_01_codeEntreeVide export;
   TRANSCOP(transcoDs);
 
   // resultat attendu :  paramètre à blanc -> return code  = 1
+  // assert(condition pour que le test soit OK : contexte de l'erreur)
   assert (transcoDs.ouDs.returnCode = 1
          :'Erreur : non détectée par TRANSCOP'
          );
@@ -56,7 +57,7 @@ end-proc;
 
 //==============================================================
 // CAS de TEST 2 : (non passant) : paramètre valide ( code_entrée = 'code_entree' )
-//  mais code non trouvé dans la table -> return code = 1
+// mais code non trouvé dans la table -> return code = 1
 
 dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 
@@ -70,6 +71,7 @@ dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
 //   résultat attendu : erreur = erreur code sortie non trouvé
 //   test ok : erreur détectée par transcop     -> return code = 1
 //   test ko : erreur non détectée par transcop -> return code = 0
+// assert(condition pour que le test soit OK : contexte de l'erreur)
   assert (transcoDs.ouDs.returnCode = 1
          : ' Erreur non détectée par TRANSCOP '
          );
@@ -78,7 +80,7 @@ end-proc;
 
 //==============================================================
 // CAS de TEST 3 : (passant) :paramètre valide ( code_entrée = 'JAMES' )
-//   et code trouvé dans la table -> return code = 0
+// et code trouvé dans la table -> return code = 0
 
 dcl-proc test_03_codeEntreeOKcodeSortieOk export;
 
@@ -92,8 +94,8 @@ dcl-proc test_03_codeEntreeOKcodeSortieOk export;
 
 // resultat attendu = pas d'erreur
 // test ok : pas erreur detectee par transcop => returnCode = 0
-// test ok : pas erreur detectee par transcop => code_entree James trouvé
 // test ok : pas erreur detectee par transcop = > code sortie = 7000
+// assert(condition pour que le test soit OK : contexte de l'erreur)
   assert (transcoDs.ouDs.returnCode = 0
          : ' Erreur détectée par TRANSCOP '
          );
@@ -112,7 +114,7 @@ dcl-proc chargeDB2;
     testCase       char(10) const;
   end-pi;
 
-  dcl-s wCommand    char(512);
+  dcl-s wCommand   char(512);
 
   wrc=0;
 
