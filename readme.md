@@ -16,9 +16,8 @@ Exemple de correspondance : dans la table **_[TRANSCOF](https://github.com/Chris
 |   code_entree  |  code_sortie  |
 |:--------------:|:-------------:|
 |   CHRISTIAN    |  12345        |
-|----------------|---------------|
 |   JAMES        |  7000         |
-|----------------|---------------|
+
 
 
 
