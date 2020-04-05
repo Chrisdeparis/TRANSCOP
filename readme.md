@@ -2,12 +2,13 @@
 
 **_Exercice de transcodage_** : 
 
-## Les DS en paramètres## (TRANSCODS)
+## Les DS en paramètres 
+#### TRANSCODS en entrée
 
 Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
-## La table DB2/SQL (TRANSCOF)
-
+## La table DB2/SQL
+#### TRANSCOF
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
 Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie.
@@ -32,7 +33,7 @@ La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0
 |   JAMES        |  7000         |
 
 ## Le programme TRANSCOP
-
+#### Les Ds en sortie
 Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
 ```diff
 + > // call transcop parm('christian')                ✅          
@@ -50,8 +51,8 @@ si le code d'entrée est à blanc -> erreur : return code = 1
 ```
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
-## Le TDD avec RPGUnit (SUTRANSCO, TRANSCOTU et TDTRANSCO)
-
+## Le TDD avec RPGUnit 
+#### SUTRANSCO, TRANSCOTU et TDTRANSCO
 Il s'agit dans cet exercice de se mettre en mode **TDD (test driven development)** ⚠⚠⚠ d'écrire une fonctionnalité dans **_transcop_** et d'écrire le cas de test (progamme de tu) correspondant (ex : contrôle paramètre entrant), d'écrire la fonctionnalité suivante (recherche code sortie dans la table) et de coder le cas de test correspondant. 
 
 Je pense à 3 cas de tests :
