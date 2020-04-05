@@ -15,11 +15,6 @@ Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)
  
 Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisdeparis/TRANSCOP/blob/master/SCRIPT/transcof.sql)**
 
-|   code_entree  |  code_sortie  |
-|:--------------:|:-------------:|
-|   CHRISTIAN    |  12345        |
-|   JAMES        |  7000         |
-
 ```sql
     // chercher la correspondance entre la table et le paramètre
     exec sql
@@ -30,6 +25,11 @@ Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisd
 ```
 
 La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
+
+|   code_entree  |  code_sortie  |
+|:--------------:|:-------------:|
+|   CHRISTIAN    |  12345        |
+|   JAMES        |  7000         |
 
 ## Le rôle du programme TRANSCOP
 
