@@ -31,7 +31,7 @@ La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0
 |   CHRISTIAN    |  12345        |
 |   JAMES        |  7000         |
 
-## Le rôle du programme TRANSCOP
+## Le programme TRANSCOP
 
 Le programme retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
 ```diff
