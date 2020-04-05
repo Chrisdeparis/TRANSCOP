@@ -68,9 +68,9 @@ dcl-proc test_02_codeEntreeOkcodeSortieNonTrouve export;
   // appel
   TRANSCOP(transcoDs);
 
-//   résultat attendu : erreur = erreur code sortie non trouvé
-//   test ok : erreur détectée par transcop     -> return code = 1
-//   test ko : erreur non détectée par transcop -> return code = 0
+// résultat attendu : erreur = erreur code sortie non trouvé
+// test ok : erreur détectée par transcop     -> return code = 1
+// test ko : erreur non détectée par transcop -> return code = 0
 // assert(condition pour que le test soit OK : contexte de l'erreur)
   assert (transcoDs.ouDs.returnCode = 1
          : ' Erreur non détectée par TRANSCOP '
