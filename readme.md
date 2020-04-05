@@ -13,9 +13,9 @@ Exemple de correspondance : dans la table **_[TRANSCOF](https://github.com/Chris
 
 
 ```diff
-|  'code_entree'  | 'code_sortie' |
-|-----------------|---------------|
-|  'CHRISTIAN'    |    12345      |
+|   code_entree  |  code_sortie  |
+|----------------|---------------|
+|   CHRISTIAN    |  12345        |
 ```
 ```sql
     // chercher la correspondance entre la table et le paramètre
