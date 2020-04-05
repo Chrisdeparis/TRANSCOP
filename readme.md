@@ -71,7 +71,7 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 ```diff
 + > CALL T_TRANSCO    ✅
 ```
-Ne pas oublier de compiler le **[TRANSCOP.SQLRPGLE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** après toute modification sur ASDEV : ⚠
+Ne pas oublier de compiler le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** après toute modification sur ASDEV : ⚠
 ```diff
 + > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
 ```
