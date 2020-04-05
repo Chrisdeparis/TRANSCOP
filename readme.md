@@ -58,7 +58,6 @@ Pour les cas 02 et 03 il faudra utiliser **_chargeDB2_** pour insérer des ligne
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
 
 Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
-[I'm an inline-style link]
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco02.sql)    ✅
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco03.sql)    ✅
 
