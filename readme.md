@@ -43,7 +43,7 @@ Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/Q
 
 le comportement attendu : ⚠ 	
 si le code d'entrée est à blanc -> erreur : return code = 1
-=> OK
+
 ```diff
 + > call transcop parm('')                           
 + > DSPLY  Veuillez renseigner le code entree 
