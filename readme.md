@@ -1,5 +1,5 @@
 # RPG : TRANSCOP
-***
+
 **_Exercice de transcodage_** : 
 
 ## Les DS comme paramètres (TRANSCODS)
