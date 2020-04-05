@@ -62,7 +62,6 @@ Je pense à 3 cas de tests :
 Dans le **[SETUP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[TEAR DOWN](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
 
 ## ChargeDB2 en test
-***
 
 Pour les cas 02 et 03 il faudra utiliser **[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
 
@@ -73,12 +72,14 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco03.sql)    ✅
 
 ## T_TRANSCO module et programme de service
-***
 
 - Le CLLE de Test Unitaire **[T_TRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE)** : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 ```diff
 + > CALL T_TRANSCO    ✅
 ```
+
+## NB
+
 Ne pas oublier de compiler le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** après toute modification sur ASDEV : ⚠
 ```diff
 + > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
