@@ -33,7 +33,7 @@ La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0
 
 ## Le rôle du programme TRANSCOP
 
-Le programme retourne 2 paramètres le _returncode_ et le _code_sortie_.      ✅
+Le programme retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
 ```diff
 + > // call transcop parm('christian')                ✅          
 + > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
