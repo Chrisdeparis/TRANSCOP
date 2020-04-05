@@ -52,7 +52,7 @@ Je pense à 3 cas de tests :
 > - cas 03 (cas passant) : paramètre valide ( code_entrée = 'JAMES' ) et code trouvé dans la table -> return code = 0, et code_sortie = 7000    ✅
 
 Dans le **[setup](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[tear down](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
-Pour les cas 02 et 03 il faudra utiliser **_chargeDB2_** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
+Pour les cas 02 et 03 il faudra utiliser **_[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)_** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
 
 
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
