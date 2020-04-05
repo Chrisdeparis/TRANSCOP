@@ -25,7 +25,7 @@ Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisd
     where code_entree = upper(:w_codeentree);
 ```
 #### Les variables de travail 
-Intéret des variables de travail pour simplifier le code et manipuler les paramètres.
+Intéret des variables de travail pour simplifier le code et manipuler les paramètres dans TRANSCOP.
 ```sql
       w_codeEntree = %char(transcoDs.inDs.code_entree);
       w_codeSortie = %dec(transcoDs.ouDs.code_sortie);
