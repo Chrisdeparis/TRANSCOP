@@ -3,9 +3,9 @@
 **_Exercice de transcodage_** : 
 
 ## Les DS en paramètres 
-#### TRANSCODS en entrée
+#### [TRANSCODS](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE) en entrée
 
-Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
+Ce programme a pour fonction de recevoir en **PARAMETRE** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
 ## La table DB2/SQL
 #### TRANSCOF
