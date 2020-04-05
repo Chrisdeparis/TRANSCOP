@@ -1,9 +1,12 @@
 # RPG : TRANSCOP
 **_Exercice de transcodage_** : 
 
-
+## Les DS comme paramètres (TRANSCODS)
+***
 Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
+## La table DB2 et SQL (TRANSCOF)
+***
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
 Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie.
@@ -11,15 +14,10 @@ Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)
  
 Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisdeparis/TRANSCOP/blob/master/SCRIPT/transcof.sql)**
 
-
-
 |   code_entree  |  code_sortie  |
 |:--------------:|:-------------:|
 |   CHRISTIAN    |  12345        |
 |   JAMES        |  7000         |
-
-
-
 
 ```sql
     // chercher la correspondance entre la table et le paramètre
@@ -31,6 +29,9 @@ Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisd
 ```
 
 La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
+
+## Le rôle du programme TRANSCOP
+***
 
 Le programme retourne 2 paramètres le _returncode_ et le _code_sortie_.      ✅
 ```diff
@@ -49,6 +50,9 @@ si le code d'entrée est à blanc -> erreur : return code = 1
 ```
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
+## Le TDD avec RPGUnit (SUTRANSCO, TRANSCOTU et TDTRANSCO)
+***
+
 Il s'agit dans cet exercice de se mettre en mode **TDD (test driven development)** ⚠⚠⚠ d'écrire une fonctionnalité dans **_transcop_** et d'écrire le cas de test (progamme de tu) correspondant (ex : contrôle paramètre entrant), d'écrire la fonctionnalité suivante (recherche code sortie dans la table) et de coder le cas de test correspondant. 
 
 Je pense à 3 cas de tests :
@@ -58,14 +62,19 @@ Je pense à 3 cas de tests :
 
 Dans le **[SETUP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[TEAR DOWN](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
 
-Pour les cas 02 et 03 il faudra utiliser **[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
+## ChargeDB2 en test
+***
 
+Pour les cas 02 et 03 il faudra utiliser **[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
 
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
 
 Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco02.sql)    ✅
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco03.sql)    ✅
+
+## T_TRANSCO module et programme de service
+***
 
 - Le CLLE de Test Unitaire **[T_TRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE)** : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 ```diff
