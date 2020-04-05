@@ -28,17 +28,20 @@ Exemple de correspondance : dans la table _transcof_
 La table transcoF a 2 colonnes _code_entree char(20), code_sortie packed(5:0)._ ⚠
 
 Le programme retourne 2 paramètres le _returncode_ et le _code_sortie_.      ✅
-
-> // call transcop parm('christian')                ✅          
-> =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
-> =>  DSPLY  returnCode = 0                         ✅   
+```diff
++ > // call transcop parm('christian')                ✅          
++ > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
++ > =>  DSPLY  returnCode = 0                         ✅   
+```
 
 le comportement attendu : ⚠ 	
 si le code d'entrée est à blanc -> erreur : return code = 1
 => OK
-> call transcop parm('')                           
-> DSPLY  Veuillez renseigner le code entree 
-> DSPLY  returnCode = 1                            
+```diff
++ > call transcop parm('')                           
++ > DSPLY  Veuillez renseigner le code entree 
++ > DSPLY  returnCode = 1      
+```
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
 Il s'agit dans cet exercice de se mettre en mode **TDD (test driven development)** ⚠⚠⚠ d'écrire une fonctionnalité dans **_transcop_** et d'écrire le cas de test (progamme de tu) correspondant (ex : contrôle paramètre entrant), d'écrire la fonctionnalité suivante (recherche code sortie dans la table) et de coder le cas de test correspondant. 
@@ -59,24 +62,29 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql    ✅
 
 - Le CL de TU : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
-> CALL T_TRANSCO    ✅
-
+```diff
++ > CALL T_TRANSCO    ✅
+```
 Ne pas oublier de compiler le **TRANSCOP.SQLRPGLE** après toute modification sur ASDEV : ⚠
-> CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
-
+```diff
++ > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
+```
 Et d'envoyer les modifications en intégration : ⚠⚠⚠ 
-> SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  ✅
-
+```diff
++ > SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  ✅
+```
 - En Dev : 
-> CALL TRANSCOP PARM('CHRISTIAN')
-
+```diff
++ > CALL TRANSCOP PARM('CHRISTIAN')
 > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
 > =>  DSPLY  returnCode = 0                         ✅  
-
+```
 
 - En intégration : SRV0803 lancer les tests...
-> RUCALLTST T_TRANSCO  ✅
+```diff
++ > RUCALLTST T_TRANSCO  ✅
 
- Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
++ Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
+ ```
 
 
