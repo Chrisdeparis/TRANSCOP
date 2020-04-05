@@ -15,7 +15,7 @@ drop table milfort.transcof;
 insert into milfort.transcof
   (code_entree, code_sortie)
   values ('CHRISTIAN', 12345),
-         ('JAMES' 7000) with NC;
+         ('JAMES', 7000) with NC;
          
 -- voir la table transcof
 select * from milfort.transcof;
