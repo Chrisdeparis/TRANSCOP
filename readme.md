@@ -33,7 +33,7 @@ La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0
 |   JAMES        |  7000         |
 
 ## Le programme TRANSCOP
-#### Les Ds en sortie
+#### TRANSCODS en sortie
 Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
 ```diff
 + > // call transcop parm('christian')                ✅          
