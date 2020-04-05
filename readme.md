@@ -10,9 +10,12 @@ Si le code est trouvé dans la table, alors le programme renvoie la valeur de co
 Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)).
  
 Exemple de correspondance : dans la table _transcof_
->  'code_entree'  -> 'CHRISTIAN' et
->  'code_sortie'  ->  12345
 
+
+```diff
++ >  'code_entree'  -> 'CHRISTIAN' et
++ >  'code_sortie'  ->  12345
+```
 ```sql
     // chercher la correspondance entre la table et le paramètre
     exec sql
