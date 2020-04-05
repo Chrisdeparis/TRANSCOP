@@ -2,14 +2,14 @@
 **_Exercice de transcodage_** : 
 
 
-Ce programme a pour fonction de recevoir en **_[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)_** un code (long 20 alpha, exemple type client : '_code_entree_'.
+Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
 
 Si le code est trouvé dans la table, alors le programme renvoie la valeur de correspondance dans le paramètre en sortie.
 Le _code de sortie_ (trouvé dans la table) sera de type numérique (packed(5:0)).
  
-Exemple de correspondance : dans la table **_[TRANSCOF](https://github.com/Chrisdeparis/TRANSCOP/blob/master/SCRIPT/transcof.sql)_**
+Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisdeparis/TRANSCOP/blob/master/SCRIPT/transcof.sql)**
 
 
 
