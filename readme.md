@@ -58,7 +58,7 @@ Je pense à 3 cas de tests :
 
 Dans le **[SETUP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[TEAR DOWN](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
 
-Pour les cas 02 et 03 il faudra utiliser **_[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)_** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
+Pour les cas 02 et 03 il faudra utiliser **[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
 
 
 - Comment bien créer les script de test avec les data ? pour les cas 2 et 3
@@ -67,7 +67,7 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco02.sql)    ✅
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco03.sql)    ✅
 
-- Le CLLE de Test Unitaire **_[T_TRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE)_** : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
+- Le CLLE de Test Unitaire **[T_TRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE)** : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 ```diff
 + > CALL T_TRANSCO    ✅
 ```
