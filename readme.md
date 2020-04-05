@@ -2,7 +2,7 @@
 
 **_Exercice de transcodage_** : 
 
-## Les DS en paramètres (TRANSCODS)
+## Les DS en paramètres## (TRANSCODS)
 
 Ce programme a pour fonction de recevoir en **[PARAMETRE](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE)** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
