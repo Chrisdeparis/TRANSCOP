@@ -51,7 +51,7 @@ Je pense à 3 cas de tests :
 > - cas 02 (non passant) : paramètre valide ( code_entrée = 'TOTO' ) mais code non trouvé dans la table -> return code = 1    ✅
 > - cas 03 (cas passant) : paramètre valide ( code_entrée = 'JAMES' ) et code trouvé dans la table -> return code = 0, et code_sortie = 7000    ✅
 
-Dans le **[setup](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[tear down](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
+Dans le **[SETUP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE)** il faudra créer la table _transcoF_ dans la bibliothèque _transcoTU_ (et la supprimer dans **[TEAR DOWN](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)**).    ✅
 Pour les cas 02 et 03 il faudra utiliser **_[chargeDB2](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE)_** pour insérer des lignes dans la table _transcoF_, donc créer créer un script sql transco02.sql et  transco03.sql   ✅
 
 
@@ -61,7 +61,7 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco02.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco02.sql)    ✅
 > [Application/Adhesion/TU/ChargeDB2/t_transco/transco03.sql](https://github.com/Chrisdeparis/TRANSCOP/blob/master/CHARGEDB2/transco03.sql)    ✅
 
-- Le [CLLE de Test Unitaire](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE) : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
+- Le **[CLLE** de Test Unitaire](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE) : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 ```diff
 + > CALL T_TRANSCO    ✅
 ```
