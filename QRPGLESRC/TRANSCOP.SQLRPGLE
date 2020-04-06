@@ -16,7 +16,6 @@ dcl-s w_codeSortie         packed(5);
 dcl-s w_returnCode         int(10);
 dcl-s errCheckParm         ind;
 
-*inlr = *on;
 monitor;
 
   clear w_codeEntree;
@@ -36,17 +35,17 @@ monitor;
       dsply (%trim(w_message));
 
       w_codeEntree = %char(transcoDs.inDs.code_entree);
-      w_codeSortie = %dec(transcoDs.ouDs.code_sortie);
+      w_codeSortie =  %dec(transcoDs.ouDs.code_sortie);
       w_returnCode = %dec(transcoDs.ouDs.returnCode);
 
       if transcoDs.ouDs.returnCode = 0; // tout va bien
         clear w_message;
         w_message =   ' in.code entree '
-                    + %trim(transcoDs.inDs.code_entree)
+                    + %trim(w_codeEntree)
                     + ' ou.code sortie '
-                    + %char(transcoDs.ouDs.code_sortie)
+                    + %char(w_codeSortie)
                     + ' ou.rc '
-                    + %char(transcoDs.ouDs.returnCode)
+                    + %char(w_returnCode)
                    + '.';
 
         dsply (%trim(w_message));
@@ -55,7 +54,7 @@ monitor;
         clear w_message;
         w_message =   ' erreur transcop'
                     + ' pour code entree : '
-                    + %char(transcoDs.inDs.code_entree);
+                    + w_returnCode;
         dsply (%trim(w_message));
       endif;
 
@@ -67,7 +66,7 @@ on-error *all;
 
 endmon;
 
-
+*inlr = *on;
 
 //---------------------------------------------------------------------
 begsr checkParm;
@@ -101,7 +100,7 @@ begsr rechercheCodeSortie;
 
   // si le paramètre en entrée est renseigné
   if w_codeEntree <> *blanks;
-    // chercher la correspondance entre la table et le paramètre
+    // chercher la correspondance dans la table à créer
     exec sql
     select  code_sortie
     into :w_codesortie
@@ -119,7 +118,7 @@ begsr rechercheCodeSortie;
          + ' trouvé '
          );
       dsply ('returnCode = '
-          + %char(transcoDs.ouDs.returnCode));
+          + %char(w_returnCode));
 
     else;
 
@@ -131,7 +130,7 @@ begsr rechercheCodeSortie;
            + ' non trouvé '
            );
          dsply ('param ok code sortie non trouvé rc = '
-          + %char(transcoDs.ouDs.returnCode));
+          + %char(w_returnCode));
     endif;
 
   else;
@@ -140,7 +139,7 @@ begsr rechercheCodeSortie;
     // renseigner le code entree
     dsply ('Veuillez renseigner le code entree');
     dsply ('erreur returnCode = '
-          + %char(transcoDS.ouDs.returnCode));
+          + %char(w_returnCode));
   endif;
 
 endsr; 
