@@ -21,8 +21,8 @@ si le code d'entrée est à blanc -> erreur : return code = 1
 
 ```diff
 + > call transcop parm('')                           
-+ > DSPLY  Veuillez renseigner le code entree 
-+ > DSPLY  returnCode = 1      
+  > DSPLY  Veuillez renseigner le code entree 
+  > DSPLY  returnCode = 1      
 ```
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
@@ -99,18 +99,18 @@ Et d'envoyer les modifications en intégration : ⚠⚠⚠
 - En Dev : 
 ```diff
 +  ADDLIBLE MILFORT 
-+ > CALL TRANSCOP PARM('CHRISTIAN')
-> =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
-> =>  DSPLY  returnCode = 0                         ✅  
+ > CALL TRANSCOP PARM('CHRISTIAN')
+ =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
+ =>  DSPLY  returnCode = 0                         ✅  
 ```
 
 - En intégration : Bien ajouter toutes les LIB SRV0803 lancer les tests...
 ```diff
 +  ADDLIBLE MILFORT 
-+  ADDLIBLE RPGUNIT
-+  ADDLIBLE ADHTU
-+  RUCALLTST T_TRANSCO  ✅
-+ Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
+   ADDLIBLE RPGUNIT
+   ADDLIBLE ADHTU
+   RUCALLTST T_TRANSCO  ✅
+   Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
  ```
 
 
