@@ -11,18 +11,18 @@ Ce programme a pour fonction de recevoir en **PARAMETRE** un code (long 20 alpha
 #### TRANSCODS en sortie
 Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
 ```diff
-+ > // call transcop parm('christian')                ✅          
-+ > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
-+ > =>  DSPLY  returnCode = 0                         ✅   
++  call transcop parm('christian')                ✅          
++  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
++  DSPLY  returnCode = 0                         ✅   
 ```
 
 le comportement attendu : ⚠ 	
 si le code d'entrée est à blanc -> erreur : return code = 1
 
 ```diff
-+ > call transcop parm('')                           
-  > DSPLY  Veuillez renseigner le code entree 
-  > DSPLY  returnCode = 1      
++  call transcop parm('')                           
++  DSPLY  Veuillez renseigner le code entree 
++  DSPLY  returnCode = 1      
 ```
 si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
 
@@ -83,34 +83,34 @@ Les scripts de tests sont à ajouter en intégration dans l'IFS : ⚠
 #### T_TRANSCO pour tout regrouper ensemble
 - Le CLLE de Test Unitaire **[T_TRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCLSRC/T_TRANSCO.CLLE)** : gère la création des modules de TU et du programme de service de test avec l'envoi en intégration.
 ```diff
-+ > CALL T_TRANSCO    ✅
++  CALL T_TRANSCO    ✅
 ```
 
 ## Nota Bene
 
 Ne pas oublier de compiler le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** après toute modification sur ASDEV : ⚠
 ```diff
-+ > CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
++  CRTSQLRPGI OBJ(MILFORT/TRANSCOP)    ✅
 ```
 Et d'envoyer les modifications en intégration : ⚠⚠⚠ 
 ```diff
-+ > SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  ✅
++  SAVRSTOBJ OBJ(TRANSCOP) LIB(MILFORT) RMTLOCNAME(SRV0803)  ✅
 ```
 - En Dev : 
 ```diff
 +  ADDLIBLE MILFORT 
- > CALL TRANSCOP PARM('CHRISTIAN')
- =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
- =>  DSPLY  returnCode = 0                         ✅  
++  CALL TRANSCOP PARM('CHRISTIAN')
++  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
++  DSPLY  returnCode = 0                         ✅  
 ```
 
 - En intégration : Bien ajouter toutes les LIB SRV0803 lancer les tests...
 ```diff
 +  ADDLIBLE MILFORT 
-   ADDLIBLE RPGUNIT
-   ADDLIBLE ADHTU
-   RUCALLTST T_TRANSCO  ✅
-   Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
++  ADDLIBLE RPGUNIT
++  ADDLIBLE ADHTU
++  RUCALLTST T_TRANSCO  ✅
++  Success. 3 test cases, 30 assertions, 0 failure, 0 error.        ✅
  ```
 
 
