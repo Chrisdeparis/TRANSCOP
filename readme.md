@@ -7,6 +7,25 @@
 
 Ce programme a pour fonction de recevoir en **PARAMETRE** un code (long 20 alpha, exemple type client : '_code_entree_'.
 
+## Le programme TRANSCOP
+#### TRANSCODS en sortie
+Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
+```diff
++ > // call transcop parm('christian')                ✅          
++ > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
++ > =>  DSPLY  returnCode = 0                         ✅   
+```
+
+le comportement attendu : ⚠ 	
+si le code d'entrée est à blanc -> erreur : return code = 1
+
+```diff
++ > call transcop parm('')                           
++ > DSPLY  Veuillez renseigner le code entree 
++ > DSPLY  returnCode = 1      
+```
+si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
+
 ## La table DB2/SQL
 #### TRANSCOF
 Il devra contrôler que le code en entrée est renseigné, si le code est renseigné alors il faudra chercher la correspondance de code dans une table (à créer).
@@ -38,27 +57,6 @@ La table **TRANSCOF** a 2 colonnes _code_entree char(20), code_sortie packed(5:0
 |:--------------:|:-------------:|
 |   CHRISTIAN    |  12345        |
 |   JAMES        |  7000         |
-
-## Le programme TRANSCOP
-#### TRANSCODS en sortie
-Le programme **[TRANSCOP](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QRPGLESRC/TRANSCOP.SQLRPGLE)** retourne 2 paramètres le _code_sortie_ et le _returncode_.      ✅
-```diff
-+ > // call transcop parm('christian')                ✅          
-+ > =>  DSPLY  sqlcode 0 code_sortie 12345 trouvé     ✅  
-+ > =>  DSPLY  returnCode = 0                         ✅   
-```
-
-le comportement attendu : ⚠ 	
-si le code d'entrée est à blanc -> erreur : return code = 1
-
-```diff
-+ > call transcop parm('')                           
-+ > DSPLY  Veuillez renseigner le code entree 
-+ > DSPLY  returnCode = 1      
-```
-si le code d'entrée n'est pas trouvé dans la table -> erreur : return code = 1
-
-
 
 ## Le TDD avec RPGUnit 
 #### [SUTRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/SUTRANSCO.SQLRPGLE), [TRANSCOTU](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TRANSCOTU.SQLRPGLE) et [TDTRANSCO](https://github.com/Chrisdeparis/TRANSCOP/blob/master/ADHTU/TDTRANSCO.SQLRPGLE)
