@@ -45,7 +45,7 @@ Exemple de correspondance : dans la table **[TRANSCOF](https://github.com/Chrisd
 ```
 #### Les variables de travail 
 Intéret des variables de travail pour simplifier le code et manipuler les paramètres dans TRANSCOP.
-```sql
+```sqlrpgle
       w_codeEntree = %char(transcoDs.inDs.code_entree);
       w_codeSortie = %dec(transcoDs.ouDs.code_sortie);
       w_returnCode = %dec(transcoDs.ouDs.returnCode);
