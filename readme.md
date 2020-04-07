@@ -5,7 +5,7 @@
 ## Les DS en paramètres 
 #### [TRANSCODS](https://github.com/Chrisdeparis/TRANSCOP/blob/master/QCOPSRC/TRANSCODS.RPGLE) en entrée
 
-Ce programme a pour fonction de recevoir en **PARAMETRE** un code (long 20 alpha, exemple type client : '_code_entree_'.
+Ce programme a pour fonction de recevoir en **PARAMETRE** un code long 20 alpha, exemple type client : '_code_entree_'.
 
 ## Le programme TRANSCOP
 #### TRANSCODS en sortie
